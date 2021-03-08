@@ -4,6 +4,7 @@
 bitset<10000010> bi;  // sieve of size 10^7+2
 vector<int> primes;   // vector to store prime numbers less than 10^7
 int sieve_size;
+// call sieve in the main function
 void sieve(int ul)      // ul=upper limit
 {
    sieve_size=ul+1;
@@ -33,6 +34,24 @@ bool isprime(int number)      // to check in O(pi(sqrt(m))) where pi(m) is no.of
          }
       return true;
 
+}
+
+vector<int> primefactors(int num)
+{
+  vector<int> factors;
+  int i=0;
+  int pf=primes[i];
+  while(num!=1 and i*i<=num)
+  {
+    while(num%pf==0)
+    {
+      factors.push_back(pf);
+      num/=pf;
+    }
+    pf=primes[++i];
+
+  }
+  return factors;
 }
 
 ]]></content>
