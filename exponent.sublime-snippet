@@ -1,0 +1,32 @@
+<snippet>
+	<content><![CDATA[
+int binaryExponentiation(int x,int n)
+{ //o(log(n))
+    int result=1;
+    while(n>0)
+    {
+        if(n % 2 ==1)
+            result=result * x;
+        x=x*x;
+        n=n/2;
+    }
+    return result;
+}
+int modularExponentiation(int x,int n,int M)
+{  //o(log(n))
+    int result=1;
+    while(n>0)
+    {
+        if(n % 2 ==1)
+            result=(result * x)%M;
+        x=(x*x)%M;
+        n=n/2;
+    }
+    return result;
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>exponent</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
