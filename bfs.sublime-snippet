@@ -1,0 +1,32 @@
+<snippet>
+	<content><![CDATA[
+vec<int> v[N];
+bool mark[N]={false};
+    
+   void bfs(int s)
+   { queue< int > q;
+        q.push(s);
+        mark[s]=true;
+        while(!q.empty())
+             {
+                int p=q.front();
+                q.pop();
+                cout<<p<<" ";
+                for(int i=0;i<v[p].size();i++)
+                     {
+                        if(mark[v[p][i]]==false)
+                             {
+                                q.push(v[p][i]);
+                                mark[v[p][i]]=true;
+                             }
+                     }
+             }
+
+   }
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>bfs</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,32 @@
+<snippet>
+	<content><![CDATA[
+vec<int> v[N];
+bool mark[N]={false};
+int dfs(int n)
+  {  int c=0;
+  	stack <int> s;
+  	  s.push(n);
+  	   
+  	  mark[n]=true;
+  	  while(!s.empty())
+  	  	  { int p=s.top();
+  	  	  	//cout<<s.top()<<" ";
+  	  	  	  c++;
+  	  	  	  s.pop();
+  	  	  	  for(int i=0;i<sz(v[p]);i++)
+  	  	  	  	  {
+  	  	  	  	  	if(!mark[v[p][i]])
+  	  	  	  	  		 {
+  	  	  	  	  		 	s.push(v[p][i]);
+  	  	  	  	  		 	 
+  	  	  	  	  		 	mark[v[p][i]]=true;
+
+  	  	  	  	  		 }
+  	  	  	  	  }
+  	  	  }
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+ <tabTrigger>dfs</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

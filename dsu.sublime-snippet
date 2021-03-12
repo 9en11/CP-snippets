@@ -1,0 +1,56 @@
+<snippet>
+	<content><![CDATA[
+		struct DSU
+{
+	int connected;
+	int par[N], siz[N];
+ 
+	void init(int n) 
+	{
+
+		for(int i=1;i<=n;i++)
+		{
+			par[i]=i;
+			siz[i]=1;
+		}
+		connected=n;
+	}
+ 
+	int find_par(int k)
+	{
+		while(k!=par[k])
+		{
+			par[k]=par[par[k]];
+			k=par[k];
+		}
+		return k;
+	}
+ 
+	int getSize(int k)
+	{
+		return siz[find_par(k)];
+	}
+ 
+	void merge(int u, int v)
+	{
+		int par1=find_par(u), par2=find_par(v);
+ 
+		if(par1==par2)
+			return;
+ 
+		connected--;
+ 
+		if(siz[par1]>siz[par2])
+			swap(par1, par2);
+ 
+		siz[par2]+=siz[par1];
+		siz[par1]=0;
+		par[par1]=par[par2];
+	}
+};]]>
+	</content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	 <tabTrigger>DSU</tabTrigger> -->
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
