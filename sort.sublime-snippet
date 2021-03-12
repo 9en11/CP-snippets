@@ -1,0 +1,230 @@
+<snippet>
+	<content><![CDATA[
+
+
+
+
+		#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+void swap_mumbers(int &a,int &b)
+  {
+    int temp=a;
+      a=b;
+      b=temp;
+
+
+
+
+
+
+  }
+
+
+
+void bubble_sort(vector<int> v)
+{
+	int n=v.size();
+	for(int i=0;i<n-1;i++)
+	{  int f=0;
+		for(int j=0;j<n-1-i;j++)
+			  {
+			  	if(v[j]>v[j+1])
+			  		 {swap_mumbers(v[j],v[j+1]);
+			  		 	f=1;
+			  		 }
+
+			  }
+
+
+			  if(f==0)
+			  	 break;
+
+	}
+     cout<<endl;
+
+	for(int i=0;i<n;i++)
+		  cout<<v[i]<<" ";
+}
+
+
+void insertion_sort(vector<int> v)
+  {
+   int n=v.size();
+   for(int i=1;i<=n-1;i++)
+   	  {
+   	  	int curr=v[i];
+   	  	int j;
+   	  	   for(j=i-1;j>=0 and v[j] > curr;j--)
+   	  	   	   v[j+1]=v[j];
+   	  	   	v[j+1]=curr;
+
+
+   	  }
+
+      cout<<endl;
+	for(int i=0;i<n;i++)
+		  cout<<v[i]<<" ";
+
+
+  }
+
+  void shell_sort(vector<int> array)
+    {
+    	int n=array.size();
+    	  for (int gap = n / 2; gap > 0; gap /= 2)
+  {
+    for (int i = gap; i < n; i += 1)
+    {
+      int temp = array[i];
+      int j;
+      for (j = i; j >= gap && array[j - gap] > temp; j -= gap)
+      {
+        array[j] = array[j - gap];
+      }
+      array[j] = temp;
+    }
+  }
+ cout<<endl;
+	for(int i=0;i<n;i++)
+		  cout<<array[i]<<" ";
+
+
+
+
+
+  }
+
+
+ 
+
+
+
+
+
+
+    
+
+
+void selection(vector<int> a)
+  {
+  	int n=a.size();
+  	for(int i=0;i<n-1;i++)
+  		  { int min_idx=i;
+  		  	for(int j=i+1;j<n;j++)
+  		  		  {
+  		  		  	if(a[j]<a[min_idx])
+  		  		  		 min_idx=j;
+  		  		  }
+
+            int x=a[min_idx];
+            a[min_idx]=a[i];
+            a[i]=x;
+
+
+  		  }
+  		    cout<<endl;
+	for(int i=0;i<n;i++)
+		  cout<<a[i]<<" ";
+  }
+
+
+
+
+
+
+
+
+void countingSort(vector<int> &array, int place)
+{
+  const int max = 10;
+  int size=array.size();
+  int output[size];
+  int count[max];
+  for (int i = 0; i < max; ++i)
+    count[i] = 0;
+  for (int i = 0; i < size; i++)
+    count[(array[i] / place) % 10]++;
+  for (int i = 1; i < max; i++)
+    count[i] += count[i - 1];
+  for (int i = size - 1; i >= 0; i--)
+  {
+    output[count[(array[i] / place) % 10] - 1] = array[i];
+    count[(array[i] / place) % 10]--;
+  }
+  for (int i = 0; i < size; i++)
+    {array[i] = output[i];//cout<<array[i]<<" ";}
+}}
+
+void radix(vector<int> array)
+{  int size=array.size();
+
+  int max = *max_element(array.begin(),array.end());
+  //cout<<max<<endl;
+
+  for (int place = 1; max / place > 0; place *= 10)
+    {  // cout<<"yuygy";
+    	countingSort(array, place);
+
+    }
+
+
+
+
+
+
+     cout<<endl;
+	for(int i=0;i<size;i++)
+		  cout<<array[i]<<" ";
+
+
+
+
+
+
+
+
+}
+
+
+ int main()
+        { int n;
+        	cout<<"enter the number of elements: ";
+        	cin>>n;
+        	vector<int> v;
+        	cout<<"\nenter the elements in vector:\n";
+        	for(int i=0;i<n;i++)
+        		  {
+        		  	int x;
+        		  	cin>>x;
+        		  	v.push_back(x);
+
+        		  }
+
+        cout<<"\nsorting from bubble_sort:\n";
+          bubble_sort(v);
+          cout<<"\nsorting from insertion_sort:\n";
+            insertion_sort(v);
+            cout<<"\nsorting from shell_sort:\n";
+              shell_sort(v);
+              cout<<"\nsorting from selection_sort:\n";
+               selection(v);
+               cout<<"\nsorting from radix_sort:\n";
+                 radix(v);
+                
+
+
+
+
+
+
+        }
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<!-- <tabTrigger>hello</tabTrigger> -->
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

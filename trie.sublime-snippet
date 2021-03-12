@@ -1,0 +1,46 @@
+<snippet>
+	<content><![CDATA[
+struct trie
+ {
+     char ch;
+     trie* arr[26]={NULL};
+     int wc=0;
+
+ };
+ trie* root;
+ trie st[1000007];
+ int co;
+
+ void init(){
+ 	co=0;
+ 	root=&st[co++];
+ 	root->ch='/';
+ 	for(int i=0;i<26;i++)
+ 		  root->arr[i]=NULL;
+ }
+ trie* get(char c)
+   {
+      trie *newnode=&st[co++];
+      newnode->ch=c;
+      for(int i=0;i<26;i++)
+      	  {
+      	  	newnode->arr[i]=NULL;
+      	  }
+      	  return newnode;
+   }
+
+ void insert(string s)
+   { 
+   	 trie *curr=root;
+   	 for(int i=0;i<s.length();i++)
+   	 	   {
+   	 	   	int id=s[i]-'a';
+   	 	   	if(curr->arr[id]==NULL)
+   	 	   		  curr->arr[id]=get(s[i]);
+ 
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+<tabTrigger>trie</tabTrigger> 
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
